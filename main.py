@@ -37,11 +37,16 @@ def validate(text):
     return text
 
 
-def main():
-    joke = validate(JOKE)
+def write_entry(text):
+    """Write the validated joke to the entry file, exactly one line."""
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
     with open(OUTPUT_PATH, "w", encoding="utf-8", newline="\n") as handle:
-        handle.write(joke + "\n")
+        handle.write(text + "\n")
+
+
+def main():
+    joke = validate(JOKE)
+    write_entry(joke)
     return 0
 
 
